@@ -37,7 +37,7 @@ public class PurchaseRequestTests {
 			// iterate user
 			Iterable<User> users = userRepo.findAll();
 			User u = users.iterator().next();
-			PurchaseRequest pr = new PurchaseRequest(u,"test","trying it out","2019-05-30","Air","New",25.00,"2019-05-24","none");
+			PurchaseRequest pr = new PurchaseRequest();
 			assertNotNull(prRepo.save(pr));
 			assertEquals("test",pr.getDescription());
 		}

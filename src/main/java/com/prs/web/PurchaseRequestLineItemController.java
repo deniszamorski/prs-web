@@ -9,6 +9,7 @@ import com.prs.business.JsonResponse;
 import com.prs.business.PurchaseRequest;
 import com.prs.business.PurchaseRequestLineItem;
 import com.prs.db.PurchaseRequestLineItemRepository;
+import com.prs.db.PurchaseRequestRepository;
 
 
 @RestController
@@ -17,6 +18,9 @@ public class PurchaseRequestLineItemController {
 
 	@Autowired
 	private PurchaseRequestLineItemRepository prliRepo;
+	
+	@Autowired 
+	private PurchaseRequestRepository prRepo;
 
 	@GetMapping("/")
 	public JsonResponse getAll() {
@@ -106,6 +110,7 @@ public class PurchaseRequestLineItemController {
         }
         // add to pr total
         pr.setTotal(prliTotal);
+        prRepo.save(pr);
         System.out.println(pr.getTotal());
         
     }

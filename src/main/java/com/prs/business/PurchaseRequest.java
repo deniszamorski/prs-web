@@ -1,5 +1,6 @@
 package com.prs.business;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
@@ -20,33 +21,19 @@ public class PurchaseRequest {
 	private User user;
 	private String description;
 	private String justification;
-	LocalDateTime  dateNeeded;
+	private LocalDate dateNeeded;
 	private String deliveryMode;
 	private String status;
 	private double total;
-	private String submittedDate;
+	private LocalDateTime submittedDate;
 	private String reasonForRejection;
 	
 	public PurchaseRequest() {
 		
 	}
 
-	public PurchaseRequest(User user, String description, String justification, LocalDateTime dateNeeded,
-			String deliveryMode, String status, double total, String submittedDate, String reasonForRejection) {
-		super();
-		this.user = user;
-		this.description = description;
-		this.justification = justification;
-		this.dateNeeded = dateNeeded;
-		this.deliveryMode = deliveryMode;
-		this.status = status;
-		this.total = total;
-		this.submittedDate = submittedDate;
-		this.reasonForRejection = reasonForRejection;
-	}
-
-	public PurchaseRequest(int id, User user, String description, String justification, LocalDateTime dateNeeded,
-			String deliveryMode, String status, double total, String submittedDate, String reasonForRejection) {
+	public PurchaseRequest(int id, User user, String description, String justification, LocalDate dateNeeded,
+			String deliveryMode, String status, double total, LocalDateTime submittedDate, String reasonForRejection) {
 		super();
 		this.id = id;
 		this.user = user;
@@ -60,9 +47,18 @@ public class PurchaseRequest {
 		this.reasonForRejection = reasonForRejection;
 	}
 
-	public PurchaseRequest(User u, String string, String string2, String string3, String string4, String string5,
-			double d, String string6, String string7) {
-		
+	public PurchaseRequest(User user, String description, String justification, LocalDate dateNeeded,
+			String deliveryMode, String status, double total, LocalDateTime submittedDate, String reasonForRejection) {
+		super();
+		this.user = user;
+		this.description = description;
+		this.justification = justification;
+		this.dateNeeded = dateNeeded;
+		this.deliveryMode = deliveryMode;
+		this.status = status;
+		this.total = total;
+		this.submittedDate = submittedDate;
+		this.reasonForRejection = reasonForRejection;
 	}
 
 	public int getId() {
@@ -97,11 +93,11 @@ public class PurchaseRequest {
 		this.justification = justification;
 	}
 
-	public LocalDateTime getDateNeeded() {
+	public LocalDate getDateNeeded() {
 		return dateNeeded;
 	}
 
-	public void setDateNeeded(LocalDateTime dateNeeded) {
+	public void setDateNeeded(LocalDate dateNeeded) {
 		this.dateNeeded = dateNeeded;
 	}
 
@@ -129,11 +125,11 @@ public class PurchaseRequest {
 		this.total = total;
 	}
 
-	public String getSubmittedDate() {
+	public LocalDateTime getSubmittedDate() {
 		return submittedDate;
 	}
 
-	public void setSubmittedDate(String submittedDate) {
+	public void setSubmittedDate(LocalDateTime submittedDate) {
 		this.submittedDate = submittedDate;
 	}
 
@@ -152,5 +148,7 @@ public class PurchaseRequest {
 				+ ", total=" + total + ", submittedDate=" + submittedDate + ", reasonForRejection=" + reasonForRejection
 				+ "]";
 	}
+	
+	
 
-}
+	}

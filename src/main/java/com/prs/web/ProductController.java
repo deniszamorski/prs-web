@@ -10,7 +10,7 @@ import com.prs.business.Product;
 import com.prs.db.ProductRepository;
 
 @RestController
-@RequestMapping("/Products")
+@RequestMapping("/products")
 public class ProductController {
 
 	@Autowired

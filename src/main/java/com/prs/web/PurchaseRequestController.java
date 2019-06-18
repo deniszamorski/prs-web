@@ -1,5 +1,6 @@
 package com.prs.web;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -44,17 +45,15 @@ public class PurchaseRequestController {
 		return jr;
 	}
 
-	@PostMapping("/submit-new")
-	public JsonResponse submitNewPR(@RequestBody User u) {
+	@PutMapping("/submit-new")
+	public JsonResponse submitNewPR(@RequestBody PurchaseRequest pr) {
 		JsonResponse jr = null;
-		PurchaseRequest p = new PurchaseRequest();
-		p.setStatus("New");
-		p.setDateNeeded(LocalDateTime.now());
-		p.setUser(u);
+		pr.setStatus("New");
+		pr.setDateNeeded(LocalDate.now());
 		// NOTE: May need to enhance exception handling if more than one exception type
 		// needs to be caught
 		try {
-			jr = JsonResponse.getInstance(prRepo.save(p));
+			jr = JsonResponse.getInstance(prRepo.save(pr));
 		} catch (Exception e) {
 			jr = JsonResponse.getInstance(e);
 		}
@@ -69,7 +68,7 @@ public class PurchaseRequestController {
 		} else {
 			p.setStatus("Review");
 		}
-		p.setDateNeeded(LocalDateTime.now());
+		p.setSubmittedDate(LocalDateTime.now());
 		// NOTE: May need to enhance exception handling if more than one exception type
 		// needs to be caught
 		try {
